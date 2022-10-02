@@ -9,9 +9,7 @@ from Classe_sismogramma_v3 import ClasseDataset
 
 Dati = ClasseDataset()
 
-"""csvin = '/home/silvia/Desktop/Instance_Data/Quattro_4s_Buone/metadata_Velocimeter_Buone_4s_Normalizzate.csv'   # percorso di dove sono contenuti i metadata
-hdf5in = '/home/silvia/Desktop/Instance_Data/Quattro_4s_Buone/data_Velocimeter_Buone_4s_Normalizzate.hdf5'       # percorso di Dove sono contenute le tracce
-"""
+
 csvin = 'C:/Users/GioCar/Desktop/Tesi_5/metadata_Velocimeter_Buone_normalizzate1_4s.csv'
 hdf5in = 'C:/Users/GioCar/Desktop/Tesi_5/data_Velocimeter_Buone_normalizzate_4s.hdf5'
 
@@ -33,6 +31,7 @@ for i in range(len(Dati.sismogramma)):
 # print(type(x_train), x_train.shape)
 y_train = np.array([Dati.metadata["trace_polarity"][i] == "positive" for i in range(len(Dati.sismogramma))] +
                    [1-(Dati.metadata["trace_polarity"][i] == "positive") for i in range(len(Dati.sismogramma))])
+y_train = y_train + 0
 # print("\nsomma ytrain", np.sum(y_train))    # OK si trova, posso implementare to_categorical
 
 (x_val, y_val) = (x_train[0:len(x_train)//10], y_train[0:len(x_train)//10])
